@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Wanje | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ryan Wanje</h1>
+        <p>Tech Enthusiast | Sales Strategist | Marine Conservation Advocate</p>
+    </header>
+
+    <section id="about-with-image">
+        <div class="about-container">
+            <img src="profile2.jpg" alt="Ryan Wanje">
+            <div class="about-text">
+                <h2>About Me</h2>
+                <p>Hello! My name is Ryan Wanje. I'm passionate about leveraging technology to drive innovation and solve real-world problems. My interests lie in software development, building digital solutions that support environmental sustainability, and creating platforms that enhance user experiences. I'm especially drawn to tech for social good — using data, mobile applications, and web tools to support marine conservation and connect underserved communities. As I grow my skills, I aim to contribute to impactful tech projects and explore the intersection between AI, development, and sustainable ecosystems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Skills</h2>
+        <ul id="skills-list">
+          <li>
+            HTML
+            <div class="skill-bar" data-skill-level="90">
+              <div class="skill-bar-fill">90%</div>
+            </div>
+          </li>
+          <li>
+            CSS
+            <div class="skill-bar" data-skill-level="80">
+              <div class="skill-bar-fill">80%</div>
+            </div>
+          </li>
+          <li>
+            JavaScript
+            <div class="skill-bar" data-skill-level="75">
+              <div class="skill-bar-fill">75%</div>
+            </div>
+          </li>
+          <li>
+            Python
+            <div class="skill-bar" data-skill-level="85">
+              <div class="skill-bar-fill">85%</div>
+            </div>
+          </li>
+        </ul>
+      </section>
+      
+    
+
+    <section id="education">
+        <h2>Education</h2>
+        <p>I studied Business Management at Kenya Institute of Management (Diploma). Completed in July 2019.</p>
+        <p><a href="RYAN_WANJE_CV_2024_2025.pdf" class="cv-button" target="_blank" download>Download My CV</a></p>          
+    </section>
+
+    <section id="experience">
+        <h2>Experience Snapshot</h2>
+        <button onclick="showExperience()">Show My Roles</button>
+        <ul id="experience-list"></ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><a href="#">Marine Conservation Tracker</a> - A web app to report ocean pollution and illegal fishing activities.</li>
+            <li><a href="#">Sales Analytics Dashboard</a> - A tool to visualize KPIs and market trends in sales.</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:ryanwx001@gmail.com">ryanwx001@gmail.com</a></p>
+        <button onclick="window.open('https://wa.me/254105821011', '_blank')" class="whatsapp-button">
+            Chat with me on WhatsApp
+        </button>
+        
+    </section>
+    
+
+    <script>
+        function addSkill() {
+            const skill = prompt("Enter a new skill:");
+            if(skill) {
+                const li = document.createElement("li");
+                li.textContent = skill;
+                document.getElementById("skills-list").appendChild(li);
+            }
+        }
+
+        function showExperience() {
+            const experiences = [
+                "Sales & Marketing Executive - Nairobi Wine Gallery",
+                "Marketing Associate - Tevat Limited",
+                "Sales Team Lead - Top Up Mama",
+                "Sales Representative - Reliable Foods & Logistics",
+                "Merchandizer/Beauty Advisor - Market-Edge Solutions",
+                "Sales Team Lead - Interactive Communications"
+            ];
+            const list = document.getElementById("experience-list");
+            list.innerHTML = "";
+            experiences.forEach(exp => {
+                const li = document.createElement("li");
+                li.textContent = exp;
+                list.appendChild(li);
+            });
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const bars = entry.target.querySelectorAll(".skill-bar");
+                bars.forEach(bar => {
+                  const fill = bar.querySelector(".skill-bar-fill");
+                  const level = bar.getAttribute("data-skill-level");
+                  fill.style.width = level + "%";
+                });
+                observer.unobserve(entry.target); // animate only once
+              }
+            });
+          }, {
+            threshold: 0.4 // triggers when 40% of the section is visible
+          });
+      
+          const skillSection = document.querySelector("#skills");
+          observer.observe(skillSection);
+        });
+      </script>
+      
+      
+</body>
+</html>
